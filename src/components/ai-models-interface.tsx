@@ -40,6 +40,7 @@ const models = [
       "OpenAI's latest general-purpose model with very advanced reasoning capabilities and improved performance across all domains.",
     icon: <Sparkles className='h-6 w-6 text-white' />,
     gradient: 'bg-gradient-to-br from-emerald-400 via-emerald-500 to-cyan-500',
+    badge: 'Pro', // Add this
   },
   {
     id: 'gpt-5-mini',
