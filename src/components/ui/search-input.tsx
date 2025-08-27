@@ -55,7 +55,7 @@ export function SearchInput({ onSearch, defaultValues }: SearchInputProps) {
                 onChange={(e) => field.handleChange(e.target.value)}
                 onBlur={field.handleBlur}
                 onKeyPress={handleKeyPress}
-                className='glass-effect h-14 pl-4 pr-12 text-base rounded-xl border-0 placeholder:text-muted-foreground/60'
+                className='bg-card/60 backdrop-blur-sm h-14 pl-4 pr-12 text-base rounded-xl border border-border/30 placeholder:text-muted-foreground/60'
               />
               <FieldInfo field={field} />
             </>

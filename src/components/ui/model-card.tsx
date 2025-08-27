@@ -43,7 +43,7 @@ export function ModelCard({
   };
 
   return (
-    <Card className='group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl glass-effect border-0 overflow-hidden'>
+    <Card  className='group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl bg-card/80 backdrop-blur-sm border border-border/50 overflow-hidden'>
       <CardContent className='p-0'>
         <div className='flex items-start space-x-0'>
           <div className={`p-6 ${gradient} flex-shrink-0`}>

@@ -27,38 +27,40 @@ export function NavigationBar() {
   }, []);
 
   return (
-    <header 
-      className={`fixed top-0 z-50 transition-all duration-300 w-full ${isScrolled ? 'shadow-md' : ''}`}
+    <header
+      className={`fixed top-0 z-50 transition-all duration-300 w-full ${
+        isScrolled ? 'shadow-md' : ''
+      }`}
     >
-      <div 
-        className={` py-4 transition-all duration-300 ${
-          isScrolled 
-            ? 'glass-effect backdrop-blur-lg rounded-lg mx-24' 
+      <div
+        className={`fixed top-0 z-50 transition-all duration-300 w-full ${
+          isScrolled
+            ? 'glass-effect backdrop-blur-xl border-b border-border/20'
             : 'bg-transparent'
         }`}
       >
-        <div className="container  mx-auto px-6 h-full flex items-center justify-between">
+        <div className='container  mx-auto px-6 h-full flex items-center justify-between'>
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">AI</span>
+          <div className='flex items-center space-x-2'>
+            <div className='w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center'>
+              <span className='text-white font-bold text-sm'>AI</span>
             </div>
-            <span className="text-xl font-bold text-foreground">MyAIVerse</span>
+            <span className='text-xl font-bold text-foreground'>MyAIVerse</span>
           </div>
 
           {/* Theme Switcher */}
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-lg bg-secondary/80 hover:bg-secondary transition-colors duration-200 border border-border/50"
-            aria-label="Toggle theme"
+            className='p-2 rounded-lg bg-secondary/80 hover:bg-secondary transition-colors duration-200 border border-border/50'
+            aria-label='Toggle theme'
             disabled={!mounted}
           >
             {!mounted ? (
-              <div className="w-5 h-5" />
+              <div className='w-5 h-5' />
             ) : theme === 'light' ? (
-              <Moon className="w-5 h-5 text-muted-foreground" />
+              <Moon className='w-5 h-5 text-muted-foreground' />
             ) : (
-              <Sun className="w-5 h-5 text-muted-foreground" />
+              <Sun className='w-5 h-5 text-muted-foreground' />
             )}
           </button>
         </div>

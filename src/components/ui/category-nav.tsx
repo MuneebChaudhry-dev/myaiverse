@@ -20,7 +20,7 @@ export function CategoryNav({
 }: CategoryNavProps) {
   return (
     <div className='flex justify-center mb-8'>
-      <div className='flex items-center gap-1 p-1 glass-effect rounded-xl border-0'>
+      <div className='flex items-center gap-1 p-1 bg-card/60 backdrop-blur-sm rounded-xl border border-border/30'>
         {categories.map((category) => (
           <Button
             key={category.id}
