@@ -42,7 +42,7 @@ export default function HeroSection() {
 
   return (
     <section className='py-20 px-4'>
-      <div className='max-w-6xl mx-auto'>
+      <div className=' max-w-7xl mx-auto'>
         <div className='flex flex-col lg:flex-col gap-12 items-center'>
           {/* Left side - Content */}
           <div>
@@ -55,7 +55,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right side - Interactive Card with Tabs */}
-          <Card className=' max-w-4/5 w-full pt-0 shadow-xl hover:shadow-2xl transition-shadow duration-300 border-2'>
+          <Card className='max-w-4/5 w-full pt-0 shadow-xl hover:shadow-2xl transition-shadow duration-300 border-2'>
             <CardContent className='p-0'>
               <Tabs
                 value={activeTab}
@@ -64,7 +64,7 @@ export default function HeroSection() {
               >
                 {/* Tab Navigation - matches your image layout */}
                 <TabsList className='w-full h-20 bg-transparent p-0 rounded-none border-b-2 flex'>
-                  {tabs.map((tab) => {
+                  {tabs.map((tab, index) => {
                     const Icon = tab.icon;
                     const isActive = activeTab === tab.id;
 
@@ -72,30 +72,21 @@ export default function HeroSection() {
                       <TabsTrigger
                         key={tab.id}
                         value={tab.id}
-                        className='relative h-full w-full flex items-center justify-center bg-transparent border-r border-border last:border-r-0 data-[state=active]:bg-transparent data-[state=active]:shadow-none rounded-none'
+                        className={`relative p-0 h-full w-full flex items-center justify-center bg-transparent border-r border-border last:border-r-0 data-[state=active]:bg-transparent data-[state=active]:shadow-none rounded-none`}
                       >
-                        {/* Background - fills entire tab when active */}
-                        <div
-                          className={`absolute inset-0 transition-all duration-500 ease-out ${
-                            isActive ? 'bg-primary' : 'bg-transparent'
-                          }`}
-                        />
-
                         {/* Icon Circle */}
                         <div
-                          className={`relative z-10 transition-all duration-500 ease-out ${
+                          className={`relative z-10 transition-all duration-100 ease-out ${
                             isActive
-                              ? 'w-12 h-12 bg-primary-foreground rounded-full'
+                              ? 'w-full  h-full bg-primary'
                               : 'w-14 h-14 bg-primary rounded-full'
-                          } flex items-center justify-center`}
+                          } flex items-center justify-center ${
+                            index === 0 && isActive ? 'rounded-tl-xl' : ''
+                          } ${index === tabs.length - 1 && isActive ? 'rounded-tr-xl' : ''}`}
                         >
                           <Icon
                             size={24}
-                            className={`transition-colors duration-300 ${
-                              isActive
-                                ? 'text-primary'
-                                : 'text-primary-foreground'
-                            }`}
+                            className={`transition-colors duration-300 text-primary-foreground`}
                           />
                         </div>
                       </TabsTrigger>
