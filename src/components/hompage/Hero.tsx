@@ -62,7 +62,7 @@ const handleChatSubmit = (message: string, files?: FileList) => {
           </div>
 
           {/* Right side - Interactive Card with Tabs */}
-          <Card className='max-w-4/5 w-full pt-0 shadow-xl hover:shadow-2xl transition-shadow duration-300 border-2'>
+          <Card className='max-w-4/5 w-full p-0 shadow-xl hover:shadow-2xl transition-shadow duration-300 border-2'>
             <CardContent className='p-0'>
               <Tabs
                 value={activeTab}
@@ -106,7 +106,7 @@ const handleChatSubmit = (message: string, files?: FileList) => {
                 </TabsList>
 
                 {/* Tab Content */}
-                <div className='p-8'>
+                <div className='p-0'>
                   {tabs.map((tab) => {
                     const Icon = tab.icon;
 
@@ -131,12 +131,13 @@ const handleChatSubmit = (message: string, files?: FileList) => {
                       </TabsContent>
                     );
                   })}
-                  <div className='mt-6 pt-6 border-t border-border'>
-                    <ChatTextArea
-                      onSubmit={handleChatSubmit}
-                      placeholder='Select a model and start writing, coding, or exploring...'
-                    />
-                  </div>
+                    <div className=''>
+                      <ChatTextArea
+                        onSubmit={handleChatSubmit}
+                        placeholder='Select a model and start writing, coding, or exploring...'
+                        className='rounded-t-none'
+                      />
+                    </div>
                 </div>
               </Tabs>
             </CardContent>

@@ -62,7 +62,7 @@ export function ChatTextArea({
   return (
     <div
       className={cn(
-        'w-full bg-background border border-border rounded-lg p-3 focus-within:ring-2 focus-within:ring-ring/20 transition-all',
+        'w-full bg-background border border-border rounded-lg p-4 focus-within:ring-2 focus-within:ring-ring/20 transition-all',
         className
       )}
     >
@@ -85,10 +85,28 @@ export function ChatTextArea({
           e.preventDefault();
           form.handleSubmit();
         }}
-        className='flex items-end gap-2'
+        className='relative w-full'
       >
-        {/* Left side controls */}
-        <div className='flex items-center gap-1'>
+        {/* Textarea area - give padding so absolutely positioned buttons don't overlap */}
+        <div className='w-full pb-10'>
+          <form.Field name='message'>
+            {(field) => (
+              <textarea
+                ref={textareaRef}
+                value={field.state.value}
+                onChange={(e) => handleTextareaChange(e, field)}
+                onBlur={field.handleBlur}
+                onKeyPress={handleKeyPress}
+                placeholder={placeholder}
+                className='w-full resize-none bg-transparent border-none outline-none text-sm placeholder:text-muted-foreground min-h-10 max-h-64'
+                rows={1}
+              />
+            )}
+          </form.Field>
+        </div>
+
+        {/* Left side controls - anchored to bottom left */}
+        <div className='absolute left-2 bottom-2 flex items-center gap-1'>
           <Button
             type='button'
             variant='ghost'
@@ -103,28 +121,12 @@ export function ChatTextArea({
           </Button>
         </div>
 
-        {/* Textarea using TanStack Form */}
-        <form.Field name='message'>
-          {(field) => (
-            <textarea
-              ref={textareaRef}
-              value={field.state.value}
-              onChange={(e) => handleTextareaChange(e, field)}
-              onBlur={field.handleBlur}
-              onKeyPress={handleKeyPress}
-              placeholder={placeholder}
-              className='flex-1 resize-none bg-transparent border-none outline-none text-sm placeholder:text-muted-foreground min-h-[20px] max-h-32'
-              rows={1}
-            />
-          )}
-        </form.Field>
-
-        {/* Send button */}
+        {/* Send button - anchored to bottom right */}
         <Button
           type='submit'
           disabled={!form.state.canSubmit || !form.state.values.message?.trim()}
           size='icon'
-          className='h-8 w-8'
+          className='absolute right-2 bottom-2 h-8 w-8'
         >
           <Send className='h-4 w-4' />
         </Button>
