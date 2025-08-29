@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { MessageCircle, Code, Image, Video, Search } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-
+import { ChatTextArea } from '@/components/chat-textarea';
+import { useRouter } from 'next/navigation';
 const tabs = [
   {
     id: 'chat',
@@ -39,6 +40,12 @@ const tabs = [
 
 export default function HeroSection() {
   const [activeTab, setActiveTab] = useState('image'); // Set image as default to match your image
+
+const router = useRouter();
+const handleChatSubmit = (message: string, files?: FileList) => {
+  // Navigate to chat page with the message
+  router.push(`/chat?message=${encodeURIComponent(message)}`);
+};
 
   return (
     <section className='py-20 px-4'>
@@ -82,7 +89,11 @@ export default function HeroSection() {
                               : 'w-14 h-14 bg-primary rounded-full'
                           } flex items-center justify-center ${
                             index === 0 && isActive ? 'rounded-tl-xl' : ''
-                          } ${index === tabs.length - 1 && isActive ? 'rounded-tr-xl' : ''}`}
+                          } ${
+                            index === tabs.length - 1 && isActive
+                              ? 'rounded-tr-xl'
+                              : ''
+                          }`}
                         >
                           <Icon
                             size={24}
@@ -112,13 +123,20 @@ export default function HeroSection() {
                           <h3 className='text-xl font-semibold mb-2'>
                             {tab.label} Assistant
                           </h3>
-                          <p className='text-muted-foreground'>
+                          {/* <p className='text-muted-foreground'>
                             {tab.description}
-                          </p>
+                            
+                          </p> */}
                         </div>
                       </TabsContent>
                     );
                   })}
+                  <div className='mt-6 pt-6 border-t border-border'>
+                    <ChatTextArea
+                      onSubmit={handleChatSubmit}
+                      placeholder='Select a model and start writing, coding, or exploring...'
+                    />
+                  </div>
                 </div>
               </Tabs>
             </CardContent>
